@@ -154,6 +154,30 @@
 
       var dialogContent = "<div id='idletimer_warning_dialog'><p>" + currentConfig.dialogText + "</p><p style='display:inline'>" + currentConfig.dialogTimeRemaining + ": <div style='display:inline' id='countdownDisplay'></div></p></div>";
 
+      /*Browser notification code*/
+      function createNotification(body) {
+        var options = {
+          body: body,
+          icon: "../../Content/images/logo_big_2.png"
+        };
+        var notification = new Notification("Session Expiration Warning", options);
+
+        notification.onclick = function () {
+          window.focus(window.location.href);
+        };
+        setTimeout(function () { notification.close() }, 10000);
+      }
+      if (!("Notification" in window)) {
+        alert("This browser does not support desktop notification");
+      }
+      else {
+        var notificationBody = currentConfig.dialogText;
+
+        Notification.permission = "granted";
+        createNotification(notificationBody);
+      }
+      /*End browser notification code*/
+
       $(dialogContent).dialog({
         buttons: [{
           text: currentConfig.dialogStayLoggedInButton,
