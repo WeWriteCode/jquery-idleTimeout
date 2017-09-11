@@ -1,5 +1,12 @@
 # jquery-idleTimeout
 
+## WWC Instructions
+```
+npm install
+npm install --global uglify-js
+npm run build
+```
+
 Highly configurable idle (no activity) timer and logout redirect for jQuery.
 
 **Functions across multiple browser windows, tabs and, optionally, iframes (single or nested) as long as the iframes meet the '[Same-Origin Policy](http://en.wikipedia.org/wiki/Same-origin_policy)'.**
